@@ -1,0 +1,50 @@
+3)COMPONENTS OF HADOOP 1.X:
+Hadoop 1.x consists of two parts
+They are 
+1)Storage(HDFS)
+2)Processing(MAP REDUCE)
+  
+  HDFS:        
+                    Hadoop distributed file system consists of 2 Daemons.Daemon is a software process that runs until it crashes on its own or you shut it down.They are
+                    1)Name Node-Master Daemon.
+                    2)Data Node-Slave Daemon.
+                   
+NAME NODE:
+                  Name nodes are placed in Master nodes.There are two types of name nodes.
+                  1)primary name node. 
+                  2)secondary name node.
+                  
+Primary Name Node:
+                *  Name Node contains the metadata information about files and directories.
+                *  Name node is  ususally 1 in number which runs on an High End Admin Machine.
+                *  Name Node is placed in Master Node. It used to store Meta Data about Data Nodes like “How many blocks are stored in Data Nodes, Which Data Nodes have data, Slave Node Details, Data Nodes locations, timestamps etc..,
+                
+Secondary Name node:
+                * This node Performs house-keeping activities for Primary NameNodes, like the periodic merging of namespace and edits.
+                * This is not a back up for a NameNode.
+                  
+DATA NODE:
+                  
+                *  Data Nodes are places in Slave Nodes.They receive instructions from the name node where to put the blocks and how to put them.
+                *  It is used to store our Application Actual Data. 
+                *  It stores data in Data Slots of size 64MB by default.
+                *  It Sends signal to Name node periodically to remind that it is active.
+                *  Data node is usually many in number and they run on commodity machines.
+                
+ MAP REDUCE:
+MapReduce is a Distributed Data Processing or Batch Processing Programming Model. Like HDFS, MapReduce component also uses Commodity Hardware to process “High Volume of Variety of Data at High Velocity Rate” in a reliable and fault-tolerant manner.
+                    
+                    1)Job Tracker-Master Daemon.
+                    2)Task Tracker-Slave Daemon.
+                    
+1) Job Tracker:
+                * Controls the overall execution of the MapReduce jobs.
+                * Job Tracker is used to assign MapReduce Tasks to Task Trackers in the Cluster of Nodes. Sometimes, it reassigns same tasks to other Task Trackers as previous Task Trackers are failed or shutdown scenarios.
+                * Job Tracker maintains all the Task Trackers status like Up/running, Failed, Recovered etc.
+                * This Job tracker runs on high end admin machine and is usually 1 in number.
+                
+2) Task Tracker:
+                
+                * Runs individual MapReduce jobs on DataNodes
+                * Periodically communicates with the JobTracker to give updates and receive instruction
+                * Task Tracker runs on many commodity machines. 
